@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceService WSDL service -->
+
+  <service name="Service" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Connection"/>
+      <parameter name="wsdlServiceElement" value="ServiceService"/>
+      <parameter name="schemaQualified" value="http://Connection"/>
+      <parameter name="wsdlServicePort" value="Service"/>
+      <parameter name="className" value="Connection.Service"/>
+      <parameter name="wsdlPortType" value="Service"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://Connection" name="getAllReviews" qname="operNS:getAllReviews" returnQName="retNS:getAllReviewsReturn" returnType="rtns:Review" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteReview" qname="operNS:deleteReview" returnQName="retNS:deleteReviewReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertReview" qname="operNS:insertReview" returnQName="retNS:insertReviewReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rating" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:review" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:description" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateReview" qname="operNS:updateReview" returnQName="retNS:updateReviewReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:description" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:rating" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:review" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://Connection" name="getCatNames" qname="operNS:getCatNames" returnQName="retNS:getCatNamesReturn" returnType="rtns:Category" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:category" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signIn" qname="operNS:signIn" returnQName="retNS:signInReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pswd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signUp" qname="operNS:signUp" returnQName="retNS:signUpReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pswd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="setLastLoginTime" qname="operNS:setLastLoginTime" returnQName="retNS:setLastLoginTimeReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:time" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://Connection" name="getUserReviews" qname="operNS:getUserReviews" returnQName="retNS:getUserReviewsReturn" returnType="rtns:Review" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fname" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:lname" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://Connection" name="getUserDetails" qname="operNS:getUserDetails" returnQName="retNS:getUserDetailsReturn" returnType="rtns:UserDetails" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pswd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getLastLoginTime" qname="operNS:getLastLoginTime" returnQName="retNS:getLastLoginTimeReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertCategoryName" qname="operNS:insertCategoryName" returnQName="retNS:insertCategoryNameReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:category" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateLastLoginTime" qname="operNS:updateLastLoginTime" returnQName="retNS:updateLastLoginTimeReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dateTime" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="isCategoryExists" qname="operNS:isCategoryExists" returnQName="retNS:isCategoryExistsReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:category" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getDistinctCategories" qname="operNS:getDistinctCategories" returnQName="retNS:getDistinctCategoriesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertLastLoginTime" qname="operNS:insertLastLoginTime" returnQName="retNS:insertLastLoginTimeReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dateTime" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="insertLastLoginTime signUp getUserDetails updateLastLoginTime getLastLoginTime insertCategoryName getUserReviews getDistinctCategories deleteReview insertReview updateReview getCatNames signIn isCategoryExists getAllReviews setLastLoginTime"/>
+
+      <typeMapping xmlns:ns="http://Connection" qname="ns:Category" type="java:Connection.Category" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://Connection" qname="ns:Review" type="java:Connection.Review" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://Connection" qname="ns:UserDetails" type="java:Connection.UserDetails" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

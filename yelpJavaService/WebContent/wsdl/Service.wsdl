@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Connection" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Connection" xmlns:intf="http://Connection" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Connection" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getAllReviews">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllReviewsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllReviewsReturn" type="impl:Review"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Review">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="fname" nillable="true" type="xsd:string"/>
+     <element name="lname" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="rating" nillable="true" type="xsd:string"/>
+     <element name="review" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="deleteReview">
+    <complexType>
+     <sequence>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteReviewReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertReview">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="rating" type="xsd:string"/>
+      <element name="review" type="xsd:string"/>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="description" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="insertReviewReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateReview">
+    <complexType>
+     <sequence>
+      <element name="description" type="xsd:string"/>
+      <element name="rating" type="xsd:string"/>
+      <element name="review" type="xsd:string"/>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="updateReviewReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCatNames">
+    <complexType>
+     <sequence>
+      <element name="category" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCatNamesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getCatNamesReturn" type="impl:Category"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Category">
+    <sequence>
+     <element name="category" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="signIn">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="pswd" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signInResponse">
+    <complexType>
+     <sequence>
+      <element name="signInReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUp">
+    <complexType>
+     <sequence>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="pswd" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUpResponse">
+    <complexType>
+     <sequence>
+      <element name="signUpReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setLastLoginTime">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="time" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setLastLoginTimeResponse">
+    <complexType>
+     <sequence>
+      <element name="setLastLoginTimeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserReviews">
+    <complexType>
+     <sequence>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserReviewsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getUserReviewsReturn" type="impl:Review"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserDetails">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="pswd" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserDetailsReturn" type="impl:UserDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserDetails">
+    <sequence>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="fname" nillable="true" type="xsd:string"/>
+     <element name="lname" nillable="true" type="xsd:string"/>
+     <element name="pswd" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getLastLoginTime">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLastLoginTimeResponse">
+    <complexType>
+     <sequence>
+      <element name="getLastLoginTimeReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertCategoryName">
+    <complexType>
+     <sequence>
+      <element name="category" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertCategoryNameResponse">
+    <complexType>
+     <sequence>
+      <element name="insertCategoryNameReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateLastLoginTime">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="dateTime" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateLastLoginTimeResponse">
+    <complexType>
+     <sequence>
+      <element name="updateLastLoginTimeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isCategoryExists">
+    <complexType>
+     <sequence>
+      <element name="category" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isCategoryExistsResponse">
+    <complexType>
+     <sequence>
+      <element name="isCategoryExistsReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDistinctCategories">
+    <complexType/>
+   </element>
+   <element name="getDistinctCategoriesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getDistinctCategoriesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertLastLoginTime">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="dateTime" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertLastLoginTimeResponse">
+    <complexType>
+     <sequence>
+      <element name="insertLastLoginTimeReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDistinctCategoriesResponse">
+
+      <wsdl:part element="impl:getDistinctCategoriesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertReviewRequest">
+
+      <wsdl:part element="impl:insertReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertReviewResponse">
+
+      <wsdl:part element="impl:insertReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isCategoryExistsResponse">
+
+      <wsdl:part element="impl:isCategoryExistsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setLastLoginTimeResponse">
+
+      <wsdl:part element="impl:setLastLoginTimeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserReviewsRequest">
+
+      <wsdl:part element="impl:getUserReviews" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signInRequest">
+
+      <wsdl:part element="impl:signIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteReviewRequest">
+
+      <wsdl:part element="impl:deleteReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLastLoginTimeRequest">
+
+      <wsdl:part element="impl:getLastLoginTime" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateReviewResponse">
+
+      <wsdl:part element="impl:updateReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllReviewsRequest">
+
+      <wsdl:part element="impl:getAllReviews" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpResponse">
+
+      <wsdl:part element="impl:signUpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertCategoryNameResponse">
+
+      <wsdl:part element="impl:insertCategoryNameResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signInResponse">
+
+      <wsdl:part element="impl:signInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteReviewResponse">
+
+      <wsdl:part element="impl:deleteReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpRequest">
+
+      <wsdl:part element="impl:signUp" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLastLoginTimeResponse">
+
+      <wsdl:part element="impl:getLastLoginTimeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertLastLoginTimeResponse">
+
+      <wsdl:part element="impl:insertLastLoginTimeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateLastLoginTimeRequest">
+
+      <wsdl:part element="impl:updateLastLoginTime" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserReviewsResponse">
+
+      <wsdl:part element="impl:getUserReviewsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserDetailsRequest">
+
+      <wsdl:part element="impl:getUserDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCatNamesRequest">
+
+      <wsdl:part element="impl:getCatNames" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setLastLoginTimeRequest">
+
+      <wsdl:part element="impl:setLastLoginTime" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isCategoryExistsRequest">
+
+      <wsdl:part element="impl:isCategoryExists" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllReviewsResponse">
+
+      <wsdl:part element="impl:getAllReviewsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserDetailsResponse">
+
+      <wsdl:part element="impl:getUserDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertLastLoginTimeRequest">
+
+      <wsdl:part element="impl:insertLastLoginTime" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateReviewRequest">
+
+      <wsdl:part element="impl:updateReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDistinctCategoriesRequest">
+
+      <wsdl:part element="impl:getDistinctCategories" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateLastLoginTimeResponse">
+
+      <wsdl:part element="impl:updateLastLoginTimeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCatNamesResponse">
+
+      <wsdl:part element="impl:getCatNamesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertCategoryNameRequest">
+
+      <wsdl:part element="impl:insertCategoryName" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Service">
+
+      <wsdl:operation name="getAllReviews">
+
+         <wsdl:input message="impl:getAllReviewsRequest" name="getAllReviewsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllReviewsResponse" name="getAllReviewsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteReview">
+
+         <wsdl:input message="impl:deleteReviewRequest" name="deleteReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteReviewResponse" name="deleteReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertReview">
+
+         <wsdl:input message="impl:insertReviewRequest" name="insertReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertReviewResponse" name="insertReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateReview">
+
+         <wsdl:input message="impl:updateReviewRequest" name="updateReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateReviewResponse" name="updateReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCatNames">
+
+         <wsdl:input message="impl:getCatNamesRequest" name="getCatNamesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCatNamesResponse" name="getCatNamesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signIn">
+
+         <wsdl:input message="impl:signInRequest" name="signInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signInResponse" name="signInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdl:input message="impl:signUpRequest" name="signUpRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signUpResponse" name="signUpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setLastLoginTime">
+
+         <wsdl:input message="impl:setLastLoginTimeRequest" name="setLastLoginTimeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setLastLoginTimeResponse" name="setLastLoginTimeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserReviews">
+
+         <wsdl:input message="impl:getUserReviewsRequest" name="getUserReviewsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserReviewsResponse" name="getUserReviewsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserDetails">
+
+         <wsdl:input message="impl:getUserDetailsRequest" name="getUserDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserDetailsResponse" name="getUserDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLastLoginTime">
+
+         <wsdl:input message="impl:getLastLoginTimeRequest" name="getLastLoginTimeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getLastLoginTimeResponse" name="getLastLoginTimeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertCategoryName">
+
+         <wsdl:input message="impl:insertCategoryNameRequest" name="insertCategoryNameRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertCategoryNameResponse" name="insertCategoryNameResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateLastLoginTime">
+
+         <wsdl:input message="impl:updateLastLoginTimeRequest" name="updateLastLoginTimeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateLastLoginTimeResponse" name="updateLastLoginTimeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isCategoryExists">
+
+         <wsdl:input message="impl:isCategoryExistsRequest" name="isCategoryExistsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isCategoryExistsResponse" name="isCategoryExistsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDistinctCategories">
+
+         <wsdl:input message="impl:getDistinctCategoriesRequest" name="getDistinctCategoriesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDistinctCategoriesResponse" name="getDistinctCategoriesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertLastLoginTime">
+
+         <wsdl:input message="impl:insertLastLoginTimeRequest" name="insertLastLoginTimeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertLastLoginTimeResponse" name="insertLastLoginTimeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceSoapBinding" type="impl:Service">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAllReviews">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllReviewsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllReviewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCatNames">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCatNamesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCatNamesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signUpRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signUpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setLastLoginTime">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setLastLoginTimeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setLastLoginTimeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserReviews">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserReviewsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserReviewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLastLoginTime">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLastLoginTimeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLastLoginTimeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertCategoryName">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertCategoryNameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertCategoryNameResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateLastLoginTime">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateLastLoginTimeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateLastLoginTimeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isCategoryExists">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isCategoryExistsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isCategoryExistsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDistinctCategories">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDistinctCategoriesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDistinctCategoriesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertLastLoginTime">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertLastLoginTimeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertLastLoginTimeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceService">
+
+      <wsdl:port binding="impl:ServiceSoapBinding" name="Service">
+
+         <wsdlsoap:address location="http://localhost:8080/yelpJavaService/services/Service"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
